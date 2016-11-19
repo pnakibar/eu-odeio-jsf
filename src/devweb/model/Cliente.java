@@ -1,7 +1,7 @@
 package devweb.model;
 
 public class Cliente {
-	public int id;
+	protected String id;
 	protected String nome;
 	protected String endereco;
 	protected String bairro;
@@ -10,7 +10,7 @@ public class Cliente {
 	protected String estado;
 	protected String telefone;
 
-	public Cliente(int id, String nome, String endereco, String bairro, String cep, String cidade, String estado,
+	public Cliente(String id, String nome, String endereco, String bairro, String cep, String cidade, String estado,
 			String telefone) {
 		super();
 		this.id = id;
@@ -23,11 +23,11 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
