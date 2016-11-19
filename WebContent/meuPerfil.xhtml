@@ -13,9 +13,49 @@ xmlns:p="http://primefaces.org/ui"
 	
 </head>
 <h:body class="background">
-	asdadsadsads
-	#{usuariobean.nome}
-	<h:outputText value="#{usuarioBean.nome}"/>
+	<h1>Consultar Cliente</h1>
+	<h:form>
+		<h:outputLabel value="nome" />
+		<h:inputText value="#{cliente.filtro}"/>
+		<h:commandButton value="procurar"/>
+	</h:form>
+	
+	<h:dataTable
+		value="#{cliente.listar()}" var="c"
+	>
+		<h:column>
+			<f:facet name="header">id</f:facet>
+			#{c.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">nome</f:facet>
+			#{c.nome}
+		</h:column>
+		<h:column>
+			<f:facet name="header">endereco</f:facet>
+			#{c.endereco}
+		</h:column>
+		<h:column>
+			<f:facet name="header">bairro</f:facet>
+			#{c.bairro}
+		</h:column>
+		<h:column>
+			<f:facet name="header">cep</f:facet>
+			#{c.cep}
+		</h:column>
+		<h:column>
+			<f:facet name="header">cidade</f:facet>
+			#{c.cidade}
+		</h:column>
+		<h:column>
+			<f:facet name="header">estado</f:facet>
+			#{c.estado}
+		</h:column>
+		<h:column>
+			<f:facet name="header">telefone</f:facet>
+			#{c.telefone}
+		</h:column>
+	</h:dataTable>
 	
 </h:body>
 </html>
