@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui"
+>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Animal</title>
+	
+</head>
+<h:body class="background">
+	<h1>Consultar Animal</h1>
+	<h:form>
+		<h:outputLabel value="nome" />
+		<h:inputText value="#{animal.filtro}"/>
+		<h:commandButton value="procurar"/>
+	</h:form>
+	
+	<h:dataTable
+		value="#{animal.listar()}" var="c"
+	>
+		<h:column>
+			<f:facet name="header">id</f:facet>
+			#{c.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">nome</f:facet>
+			#{c.nome}
+		</h:column>
+	</h:dataTable>
+	<h:form>
+	   <h:commandButton action="criarCliente" value="Criar novo cliente" />
+	</h:form>
+</h:body>
+</html>

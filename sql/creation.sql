@@ -18,6 +18,7 @@ CREATE TABLE cliente (
 CREATE TABLE animal (
 	id SERIAL PRIMARY KEY NOT NULL,
 	nome TEXT NOT NULL,
+  idade INTEGER NOT NULL,
 	id_especie INTEGER REFERENCES especie (id),
 	id_cliente INTEGER REFERENCES cliente (id)
 );
