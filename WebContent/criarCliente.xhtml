@@ -14,46 +14,41 @@ xmlns:p="http://primefaces.org/ui"
 </head>
 <h:body class="background">
 	<h1>Cadastrar Cliente</h1>
+	<h:messages infoStyle="color:blue" style="color:red" />
 	<h:form>
-        <h:panelGrid columns="3">
+        <h:panelGrid columns="2">
             <h:outputLabel for="novoid">Id:</h:outputLabel>
             <h:inputText required="true" requiredMessage="Por favor digite o cÃ³digo" value="#{cliente.novoid}" id="novoid">
               <f:validateRequired></f:validateRequired>
             </h:inputText>
-            <h:message for="novoid" style="color:red" />
 
 
             <h:outputLabel for="novonome">Nome:</h:outputLabel>
             <h:inputText required="true" requiredMessage="Por favor digite o nome" value="#{cliente.novonome}" id="novonome">
                 <f:validateRequired></f:validateRequired>
             </h:inputText>
-            <h:message for="novonome" style="color:red" />
 
             <h:outputLabel for="novoendereco">Endereco:</h:outputLabel>
             <h:inputText required="true" requiredMessage="Por favor digite o endereco" value="#{cliente.novoendereco}" id="novoendereco">
                 <f:validateRequired></f:validateRequired>
             </h:inputText>
-            <h:message for="novoendereco" style="color:red" />
-
+            
             <h:outputLabel for="novobairro">Bairro:</h:outputLabel>
             <h:inputText required="true" requiredMessage="Por favor digite o bairro" value="#{cliente.novobairro}" id="novobairro">
                 <f:validateRequired></f:validateRequired>
             </h:inputText>
-            <h:message for="novobairro" style="color:red" />
-
+            
             <h:outputLabel for="novocep">CEP:</h:outputLabel>
             <h:inputText validatorMessage="O campo cep deve conter 8 números" required="true" requiredMessage="Por favor digite o cep" value="#{cliente.novocep}" id="novocep">
                 <f:validateRequired></f:validateRequired>
                 <f:validateLength minimum="8" maximum="8"/>
                 <f:validateRegex pattern="[0-9]*"></f:validateRegex>
             </h:inputText>
-            <h:message for="novocep" style="color:red" />
 
             <h:outputLabel for="novocidade">Cidade:</h:outputLabel>
             <h:inputText required="true" requiredMessage="Por favor digite o cidade" value="#{cliente.novocidade}" id="novocidade">
                 <f:validateRequired></f:validateRequired>
             </h:inputText>
-            <h:message for="novocidade" style="color:red" />
 
             <h:outputLabel for="novoestado">Estado:</h:outputLabel>
             <h:inputText required="true" validatorMessage="O campo estado deve conter 2
@@ -62,18 +57,22 @@ caracteres" requiredMessage="Por favor digite o estado" value="#{cliente.novoest
                 <f:validateLength minimum="2" maximum="2" />
                 <f:validateRegex pattern="[a-zA-Z]*"></f:validateRegex>
             </h:inputText>
-            <h:message for="novoestado" style="color:red" />
 
             <h:outputLabel for="novotelefone">Telefone:</h:outputLabel>
             <h:inputText required="true" requiredMessage="Por favor digite o telefone" value="#{cliente.novotelefone}" id="novotelefone">
                 <f:validateRequired></f:validateRequired>
             </h:inputText>
-            <h:message for="novotelefone" style="color:red" />
 
             <h:commandButton action="#{cliente.inserir}" value="Submit"></h:commandButton>
-            <h:commandButton action="index" value="Pesquisar Cliente >>>" />
-			<h:commandButton action="manterAnimal" value="Manter Animal >>>" />
         </h:panelGrid>
     </h:form>
+    <h:form>
+    	<h:commandButton action="index" value="Pesquisar Cliente >>>" />
+    </h:form>
+    <h:form>
+    	<h:commandButton action="animal" value="Manter Animal >>>" />
+    </h:form>
+    
+	
 </h:body>
 </html>

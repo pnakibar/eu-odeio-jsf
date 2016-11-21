@@ -7,8 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import devweb.model.Cliente;
 
@@ -24,6 +26,7 @@ public class ClienteDAO extends DAO{
 	private String novoestado = "";
 	private String novotelefone = "";
 	private String novoid = "";
+	private String msg;
 
 	public String getNovoid() {
 		return novoid;
@@ -35,11 +38,8 @@ public class ClienteDAO extends DAO{
 		if (this.filtro.length() == 0) {
 			return this._listar("select * from cliente;");
 		}
-		return this.listar(this.filtro);
+		return this._listar("select * from cliente where nome like '%" + this.filtro + "%'");
 
-	}
-	public List<Cliente> listar(String nome) throws ClassNotFoundException, SQLException {
-		return this._listar("select * from cliente where nome like '%" + nome + "%'");
 	}
 
 	private List<Cliente> _listar(String query) throws ClassNotFoundException, SQLException {
@@ -67,7 +67,6 @@ public class ClienteDAO extends DAO{
 	}
 
 	public String inserir() throws ClassNotFoundException, SQLException {
-		System.out.println("CHEGUEI");
 	    Cliente novoCliente = new Cliente(
 		    this.novoid,
 		    this.novonome,
@@ -91,7 +90,7 @@ public class ClienteDAO extends DAO{
   		stmt.execute();
   		this.close();
 
-
+  		this.novoid = "";
 	    this.novonome = "";
 	    this.novoendereco = "";
 	    this.novobairro = "";
@@ -99,8 +98,8 @@ public class ClienteDAO extends DAO{
 	    this.novocidade = "";
 	    this.novoestado = "";
 	    this.novotelefone = "";
-	    
-		return "index";
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido com sucesso", ""));
+		return "criarCliente";
 	}
 	
 	public String getNovonome() {
@@ -151,6 +150,13 @@ public class ClienteDAO extends DAO{
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
 	}
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	
 
 
 }
